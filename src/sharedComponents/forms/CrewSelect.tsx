@@ -48,8 +48,7 @@ export const CrewSelect: React.FC<Props> = ({ onlyActive, onlyApplyable }) => {
     return (
         <Wrapper>
             <Select
-                name="selectedCrew"
-                ref={register}
+                {...register('selectedCrew')}
                 disabled={isLoading || isLoadingError}
                 value={selected}
                 onChange={onChange}

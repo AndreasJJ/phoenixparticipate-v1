@@ -28,7 +28,7 @@ const Link = styled(NavLink)<NavLinkProps>`
 
 export const ActiveLink: React.FC<NavLinkProps> = ({ children, ...rest }) => {
     return (
-        <Link exact activeStyle={{ color: theme.colors.primary }} {...rest}>
+        <Link end style={({ isActive }) => (isActive ? { color: theme.colors.primary } : undefined)} {...rest}>
             {children}
         </Link>
     );

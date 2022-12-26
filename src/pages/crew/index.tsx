@@ -17,8 +17,7 @@ import { Skeleton } from '../../sharedComponents/Skeleton';
 import { dateOfBirthToAge } from '../../utils/age';
 import { useAuth } from '../../authentication/useAuth';
 import { WarningBox } from '../../sharedComponents/WarningBox';
-import { Link, useHistory } from 'react-router-dom';
-import { BaseButton } from '../../sharedComponents/forms/Button/BaseButton';
+import { useNavigate } from 'react-router-dom';
 import { PositiveButton } from '../../sharedComponents/forms/Button';
 
 const Container = styled.div`
@@ -52,7 +51,7 @@ export const Crew: React.FC = () => {
     } = useCurrentEvent();
     const { client } = useAuth();
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const isLoading = isLoadingApplications || isLoadingCurrentEvent;
     const isLoadingError = isLoadingApplicationsError || isLoadingCurrentEventError;
@@ -97,7 +96,7 @@ export const Crew: React.FC = () => {
                         <Center>
                             <PositiveButton
                                 onClick={() => {
-                                    history.push('/avatar');
+                                    navigate('/avatar');
                                 }}
                             >
                                 Last opp avatar

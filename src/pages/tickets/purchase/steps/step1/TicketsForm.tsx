@@ -118,7 +118,7 @@ export const TicketsForm: React.FC<Props> = ({ ticketTypes, onSubmit }) => {
     return (
         <FormProvider {...formMethods}>
             <Form onSubmit={handleSubmit}>
-                {formMethods.errors && ticketTypes && ticketTypes.length > 0 && (
+                {formMethods.formState.errors && ticketTypes && ticketTypes.length > 0 && (
                     <ErrorMessage name={ticketTypes[0].uuid} />
                 )}
                 <Header2>Billetter(Lar deg være med på LAN)</Header2>

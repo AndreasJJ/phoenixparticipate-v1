@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { HandIndexFill } from '@styled-icons/bootstrap/HandIndexFill';
 import { Ticket as PhoenixTicket } from '@phoenixlan/phoenix.js';
-import QRCode from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 
 import { SeatRow, Seat, Row, SubTitle, Title, Corner } from './ticketConponents';
 
@@ -144,7 +144,7 @@ export const Ticket: React.FC<Props> = ({ ticket, showQr = false, onClick, enlar
                 <Corner left={true} top={true} />
                 <Corner left={false} top={true} />
                 <InnerBottom enlarge={enlarge}>
-                    {showQr ? <QRCode value={qr} size={enlarge ? 90 : 60} /> : <Tap>QR</Tap>}
+                    {showQr ? <QRCodeSVG value={qr} size={enlarge ? 90 : 60} /> : <Tap>QR</Tap>}
                 </InnerBottom>
             </Bottom>
         </Container>

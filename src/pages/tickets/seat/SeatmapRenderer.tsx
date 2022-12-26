@@ -98,8 +98,8 @@ export const SeatmapRenderer: React.FC<SeatmapRendererProps> = ({ activeTicket, 
         if (activeTicket !== null) {
             try {
                 await Ticket.seatTicket(activeTicket, seatUuid);
-            } catch (e) {
-                toast.error(e.toString());
+            } catch (e: unknown) {
+                toast.error(JSON.stringify(e));
             }
             refetchSeatmap();
             onSeatedTicket(activeTicket);

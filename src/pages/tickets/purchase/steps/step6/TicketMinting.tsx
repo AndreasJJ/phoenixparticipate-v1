@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { poll } from '@phoenixlan/phoenix.js';
 import { LoadingSpinner } from '../../../../../sharedComponents/LoadingSpinner';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Spinner = styled.div`
     position: relative;
@@ -45,7 +45,7 @@ enum ServerStatus {
 }
 
 export const TicketMinting: React.FC<Props> = ({ uuid }) => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const POLLING_INTERVAL = 5;
     const NORMAL_WAIT_TIME_SECONDS = 60;
@@ -58,7 +58,7 @@ export const TicketMinting: React.FC<Props> = ({ uuid }) => {
     useEffect(() => {
         if (status === Status.success) {
             const timoutId = setTimeout(() => {
-                history.push('/');
+                navigate('/');
             }, 5000);
 
             return () => clearTimeout(timoutId);

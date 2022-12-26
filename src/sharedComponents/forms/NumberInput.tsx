@@ -188,8 +188,8 @@ export const NumberInput: React.FC<Props> = ({ min = 0, max = 10, tabindex = 1, 
         <Controller
             control={control}
             name={name}
-            render={({ onChange, value }) => (
-                <_NumberInput min={min} max={max} value={value} onChange={onChange} tabindex={tabindex} />
+            render={({ field }) => (
+                <_NumberInput min={min} max={max} value={field.value} onChange={field.onChange} tabindex={tabindex} />
             )}
         />
     );

@@ -33,7 +33,7 @@ export const TextArea: React.FC<Props> = ({ name }) => {
 
     return (
         <Wrapper>
-            <StyledTextArea ref={register} name={name} maxLength={10000} rows={8} />
+            <StyledTextArea {...register(name)} maxLength={10000} rows={8} />
             <ErrorMessage name={name} />
         </Wrapper>
     );

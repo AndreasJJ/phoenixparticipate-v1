@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { CenterBox } from '../../../sharedComponents/boxes/CenterBox';
 import { Header1 } from '../../../sharedComponents/Header1';
@@ -38,14 +38,14 @@ const TicketTransferContainer = styled.div`
 `;
 
 export const Tickets: React.FC = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const { client } = useAuth();
     const { data: currentEvent, isLoading: isLoadingCurrentEvent } = useCurrentEvent();
     const { data: ownedTickets } = useOwnedTickets();
     const { data: ticketTransfers } = useTicketTransfers();
 
     const buyTickets = () => {
-        history.push('/buy');
+        navigate('/buy');
     };
 
     const currentTickets = (ownedTickets ?? [])

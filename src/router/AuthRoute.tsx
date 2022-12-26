@@ -1,24 +1,23 @@
-/*
- * @created 27/03/2021 - 20:11
- * @project phoenixparticipate-v1
- * @author andreasjj
- */
-import * as React from 'react';
-import { Redirect, Route, RouteProps } from 'react-router-dom';
+import React, { ReactNode } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useAuth } from '../authentication/useAuth';
+import { Outlet } from 'react-router-dom';
 
-interface AuthRouteProps extends RouteProps {
-    redirect?: string;
+interface Props {
+    redirectTo: string;
+    isPublic?: boolean;
 }
 
-export const AuthRoute: React.FC<AuthRouteProps> = ({ children, redirect = '/login', ...rest }) => {
+export const AuthRoute: React.FC<Props> = ({ children, redirectTo, isPublic = false }) => {
     const { authenticated } = useAuth();
-    return (
-        <Route
-            {...rest}
-            render={() => {
-                return authenticated ? children : <Redirect to={redirect} />;
-            }}
-        />
-    );
+
+    const publicRoute = () => {
+        return authenticated ? <Navigate to={redirectTo} /> : <Outlet />;
+    };
+
+    const privateRoute = () => {
+        return authenticated ? <Outlet /> : <Navigate to={redirectTo} />;
+    };
+
+    return <>{isPublic ? publicRoute() : privateRoute()}</>;
 };

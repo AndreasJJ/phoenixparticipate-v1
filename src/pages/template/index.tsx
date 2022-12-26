@@ -9,6 +9,7 @@ import { Header } from './Header';
 import { Transition, TransitionStatus } from 'react-transition-group';
 import { ActiveLink } from './ActiveLink';
 import { useSwipeable } from 'react-swipeable';
+import { Outlet } from 'react-router-dom';
 
 const Wrapper = styled.div`
     display: flex;
@@ -200,7 +201,9 @@ export const Template: React.FC = ({ children }) => {
                                     </Transition>
                                 </Padding>
                             </Sidebar>
-                            <Content state={state}>{children}</Content>
+                            <Content state={state}>
+                                <Outlet />
+                            </Content>
                         </>
                     )}
                 </Transition>
